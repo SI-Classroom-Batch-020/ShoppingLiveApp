@@ -23,10 +23,7 @@ class MainActivity : ComponentActivity() {
             MyShopTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    HabitTrackerScreen(modifier = Modifier.padding(innerPadding))
-
-
-
+                    ShoppingScreen(modifier = Modifier.padding(innerPadding))
 
                 }
             }

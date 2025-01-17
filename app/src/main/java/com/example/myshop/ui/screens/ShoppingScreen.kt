@@ -76,7 +76,6 @@ fun ShoppingScreen(modifier: Modifier = Modifier) {
             Spacer(Modifier.weight(1f))
 
             ItemListSummary(warenkorb)
-            Text(warenkorb.first().name)
 
 
         }
