@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myshop.ui.screens.HabitTrackerScreen
 import com.example.myshop.ui.screens.ShoppingScreen
 import com.example.myshop.ui.theme.MyShopTheme
 
@@ -22,9 +23,7 @@ class MainActivity : ComponentActivity() {
             MyShopTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    ShoppingScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    HabitTrackerScreen(modifier = Modifier.padding(innerPadding))
 
 
 
