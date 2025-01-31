@@ -9,8 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.myshop.data.Product
-import com.example.myshop.data.itemList
+import com.example.myshop.data.model.Product
 
 
 @Composable
@@ -48,7 +47,11 @@ fun ProductItem(
 private fun ProductItemPreview() {
 
     ProductItem(
-        itemList.random(),
+        Product(
+            name = "Product",
+            description = "Description",
+            price = 4.99
+        ),
         itemClicked = {})
 
 

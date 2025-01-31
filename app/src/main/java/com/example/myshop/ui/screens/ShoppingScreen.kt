@@ -1,43 +1,31 @@
 package com.example.myshop.ui.screens
 
-import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.myshop.data.Product
-import com.example.myshop.data.angebotList
-import com.example.myshop.data.itemList
+import com.example.myshop.data.model.Product
 import com.example.myshop.ui.components.ItemListSummary
 import com.example.myshop.ui.components.ProductItem
 
 
 @Composable
-fun ShoppingScreen(modifier: Modifier = Modifier) {
-    //Jedes Composable erhält 'modifier : Modifier = Modifier' als Parameter
-
-    var warenkorb: List<Product> by remember {
-        mutableStateOf(
-            listOf()
-        )
-    }
+fun ShoppingScreen(
+    productList: List<Product>,
+    cart: List<Pair<Product, Int>>,
+    productClicked : (Product) -> Unit = {},
+    modifier: Modifier = Modifier
+) {
 
     Surface(
         modifier = modifier.fillMaxSize()
@@ -46,68 +34,26 @@ fun ShoppingScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxHeight()
         ) {
 
-            LazyColumn (
+            LazyColumn(
                 modifier = Modifier.fillMaxHeight(0.9f)
-            ){
+            ) {
 
-                items(angebotList) { angebot ->
-
-                    ProductItem(
-                        product = angebot,
-                        itemClicked = { warenkorb = warenkorb + it },
-                        modifier = Modifier.background(Color.Yellow)
-                    )
-
-                }
-
-
-                items(itemList) { product ->
+                items(productList) { product ->
 
                     ProductItem(
-                        product,
-                        itemClicked = { warenkorb = warenkorb + it },
+                        product = product,
+                        itemClicked = productClicked,
                         modifier = Modifier
                     )
 
                 }
 
+
             }
 
             Spacer(Modifier.weight(1f))
-            ItemListSummary(warenkorb)
 
-
-
-//            ProductItem(
-//                product = itemList[0],
-//                itemClicked = { clickedProduct ->
-//
-//
-//                    //So funktioniert es aber es ist schöner wenn die Funktion
-//                    //das geklickte Product als Parameter erhält
-////                    warenkorb.add(itemList[0])
-//
-//                    warenkorb = warenkorb + clickedProduct
-//
-//                },
-//            )
-//            ProductItem(
-//                itemList[1],
-//                itemClicked = {
-//                    warenkorb = warenkorb + it
-//                    Log.d("WarenkorbLog", "$warenkorb")
-//                },
-//            )
-//            ProductItem(
-//                itemList[2],
-//                itemClicked = { warenkorb = warenkorb + it},
-//            )
-//            ProductItem(
-//                itemList[3],
-//                itemClicked = { warenkorb = warenkorb + it })
-//            ProductItem(
-//                itemList[4],
-//                itemClicked = { warenkorb = warenkorb + it })
+            ItemListSummary(cart)
 
 
         }
@@ -119,7 +65,46 @@ fun ShoppingScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun ShoppingScreenPreview() {
 
-    ShoppingScreen()
-
-
+    ShoppingScreen(
+        productList = listOf(
+            Product(
+                name = "Saure Schlangen 1",
+                description = "Box 1kg",
+                price = 10.0
+            ),
+            Product(
+                name = "Saure Schlangen 2",
+                description = "Box 1kg",
+                price = 10.0
+            ),
+            Product(
+                name = "Saure Schlangen 3",
+                description = "Box 1kg",
+                price = 10.0
+            ),
+        ),
+        cart = listOf(
+            Pair(
+                Product(
+                    name = "Test 1",
+                    description = "Description",
+                    price = 2.99
+                ), 2
+            ),
+            Pair(
+                Product(
+                    name = "Test 1",
+                    description = "Description",
+                    price = 1.99
+                ), 5
+            ),
+            Pair(
+                Product(
+                    name = "Test 1",
+                    description = "Description",
+                    price = 5.99
+                ), 1
+            ),
+        )
+    )
 }

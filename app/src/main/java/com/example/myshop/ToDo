@@ -1,0 +1,47 @@
+
+
+
+
+- Warenkorb Feature
+    - Warenkorb Screen(OrderScreen)
+        - Navigation zu Warenkorb Screen
+    - Produkt zu Warenkorb hinzufügen
+    - ItemListSummary anpassen
+
+- OrderScreen
+    - Warenkorb aufgelistet sehen
+    - Bestellung bestätigen
+    - Warenkorb wieder leeren
+
+
+
+- (done) Datenbank einrichten
+
+    - (done) Datenklasse verändern(tableName)
+        - (done) Primarykey erstellen
+        - (done) tableName hinzufügen
+        - (done) Boolean angebot -> (reduziert : Double?)
+    - (done) Dao anlegen
+        - (done) getAll
+        - (Insert)
+    - (done) Database Datei anlegen(Boilerplate)
+    - Restliche Crud Funktionen
+        - Create
+        - Update
+        - Delete
+
+- ViewModel erstellen
+    - (done) Datenbank anbinden -> Produkte StateFlow
+    - Warenkorb StateFlow anlegen
+
+
+
+
+- UI überarbeiten
+    - Angebote anzeigen
+
+
+
+
+
+
